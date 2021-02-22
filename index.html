@@ -22,10 +22,11 @@
 		<div id="map"></div>
 		<!-- Leaflet JS -->
 		<script>
-			var csvString =  
+			var csvString = 'https://github.com/kerns-nathan/cannabisownership/blob/main/data/MA_Final%20Licenses_2.10.21_v1.csv'; 
 
 			// Parse data
 			Papa.parse(csvString, {
+  				download:true,
   				header: true,
   				step: function(result) {
     				csvData.push(result.data)
@@ -44,7 +45,7 @@
 			    id: 'mapbox/streets-v11',
 			    tileSize: 512,
 			    zoomOffset: -1,
-			    accessToken: 'pk.eyJ1Ijoibmtlcm5zIiwiYSI6ImNra2VlY2FsbjBrMTgyb3FiczJ2aWN6MDIifQ.OoqEenXSw-1IzOWy1ebIZQ'
+			    accessToken: ${{ MAPBOX_TOKEN }}
 				}).addTo(mymap);
 			var popup = L.popup();
 
